@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Longin</string>
+    <string name="usuario">User</string>
+    <string name="senha">Password</string>
+    <string name="bVindo">Welcome</string>
+    <string name="salvar">Save</string>
+    <string name="voltar">Back</string>
+    <string name="cadastrar">Registrer</string>
+    <string name="logar">Sing up</string>
+    <string name="cCadastrado">Registered User</string>
+    <string name="nCadastrado">Not Registered User</string>
+    <string name="cVazio">empty field</string>
+    <string name="cSucesso">Successfully registered</string>
+
+</resources>
