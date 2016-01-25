@@ -7,11 +7,11 @@ import java.io.Serializable;
  */
 public class Item implements Serializable {
     private String nome;
-    private String valor;
+    private String telefone;
 
-    public Item(String nome, String valor) {
+    public Item(String nome, String telefone) {
         this.nome = nome;
-        this.valor = valor;
+        this.telefone = telefone;
     }
 
     public String getNome() {
@@ -22,11 +22,11 @@ public class Item implements Serializable {
         this.nome = nome;
     }
 
-    public String getValor() {
-        return valor;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setValor(String valor) {
-        this.valor = valor;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }

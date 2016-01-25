@@ -48,7 +48,7 @@ public class CustomAdapter extends BaseAdapter {
         //((TextView) view.findViewById(R.id.data)).setText(miniCurso.getData());
 
         ((TextView)convertView.findViewById(R.id.tvNome)).setText(item.getNome());
-        ((TextView)convertView.findViewById(R.id.tvValor)).setText(item.getValor());
+        ((TextView)convertView.findViewById(R.id.tvValor)).setText(item.getTelefone());
 
         return convertView;
     }

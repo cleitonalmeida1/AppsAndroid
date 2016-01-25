@@ -19,10 +19,11 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/tvNome"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:textColor="@color/colorText"
-        android:text="XTeiga" />
+        android:text="XTeiga"
+        android:layout_above="@+id/textView3"
+        android:layout_alignRight="@+id/tvValor"
+        android:layout_alignEnd="@+id/tvValor" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,5 +46,14 @@
         android:textColor="@color/colorText"
         android:layout_centerHorizontal="true"
         android:text="R$ 3,00" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_below="@+id/tvNome"
+        android:layout_toRightOf="@+id/tvNome"
+        android:layout_toEndOf="@+id/tvNome" />
 
 </RelativeLayout>
