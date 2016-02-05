@@ -1,11 +1,13 @@
 package helper;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import cleiton.adapter.R;
+import model.Agenda;
 
 /**
  * Created by Cleiton Gonçalves on 28/01/2016.
@@ -41,6 +43,21 @@ public class Banco extends SQLiteOpenHelper {
             return getWritableDatabase().rawQuery(sql, null);
         }
 
+         public int updateAgenda(Agenda agenda) {
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            values.put("nome", agenda.getNome());
+            values.put("telefone", agenda.getTelefone());
+            // updating row
+            return db.update("a", values, "_id = ?", new String[]{String.valueOf(agenda.getId())});
+         }
+
+         public void deleteAgenda(Agenda agenda) {
+            SQLiteDatabase db = this.getWritableDatabase();
+            db.delete("agenda", "_id = ?", new String[]{String.valueOf(agenda.getId())});
+            db.close();
+    }
 
 
     }
