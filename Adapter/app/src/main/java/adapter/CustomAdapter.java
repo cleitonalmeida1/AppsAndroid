@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import cleiton.adapter.R;
 import model.Agenda;
 
@@ -42,16 +44,32 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //Pega o item de acordo com a posicao.
-        Agenda item = itens.get(position);
-        //infla o layout para podermos preencher os dados
-        convertView = layoutInflater.inflate(R.layout.item_layout, null);
+        ViewHolder holder;
+        Agenda l = itens.get(position);
 
-        ((ImageView) convertView.findViewById(R.id.imageView2)).setImageResource(item.getImagem());
-
-        ((TextView) convertView.findViewById(R.id.tvNome)).setText(item.getNome());
-        ((TextView) convertView.findViewById(R.id.tvValor)).setText(item.getTelefone());
+        if (convertView != null) {
+            holder = (ViewHolder) convertView.getTag();
+        } else {
+            convertView =  layoutInflater.inflate(R.layout.item_layout, parent, false);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
+        }
+        holder.nome.setText(l.getNome());
+        holder.imagem.setImageResource(l.getImagem());
+        holder.telefone.setText(l.getTelefone());
 
         return convertView;
+    }
+
+    static class ViewHolder {
+        @Bind(R.id.tvNome)
+        TextView nome;
+        @Bind(R.id.tvTelefone) TextView telefone;
+        @Bind(R.id.imageView)
+        ImageView imagem;
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 }

@@ -33,6 +33,7 @@ public class BancoHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE agenda(_id INTEGER PRIMARY KEY  AUTOINCREMENT,nome TEXT, telefone TEXT, imagem integer)";
+
         db.execSQL(sql);
     }
 
@@ -49,7 +50,7 @@ public class BancoHelper extends SQLiteOpenHelper {
      */
 
     // Adicionando nova agenda
-    public void addLanche(Agenda agenda) {
+    public void addAgenda(Agenda agenda) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -64,8 +65,8 @@ public class BancoHelper extends SQLiteOpenHelper {
     }
 
 
-    // Retorna um unico lanche
-    public  Agenda getLanche(int id) {
+    // Retorna um unico Agenda
+    public  Agenda getAgenda(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT _id,  nome,telefone,imagem FROM agenda where _id = ?";
 
@@ -80,7 +81,7 @@ public class BancoHelper extends SQLiteOpenHelper {
             agenda.setTelefone(cursor.getString(2));
             agenda.setImagem(cursor.getInt(3));
 
-            // return lanche
+            // return Agenda
             return agenda;
 
         }
@@ -88,8 +89,8 @@ public class BancoHelper extends SQLiteOpenHelper {
 
     }
 
-    // Obtendo todos os lanches
-    public List<Agenda> getAllLanches() {
+    // Obtendo todos os Agenda
+    public List<Agenda> getAllAgendas() {
         List<Agenda> agendas = new ArrayList<Agenda>();
         // Sql da consulta da base de dados
         String sql = "SELECT _id,  nome,telefone,imagem FROM agenda";
@@ -114,7 +115,7 @@ public class BancoHelper extends SQLiteOpenHelper {
 
 
     // Updating uma única agenda
-    public int updateLanche(Agenda agenda) {
+    public int updateAgenda(Agenda agenda) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -128,7 +129,7 @@ public class BancoHelper extends SQLiteOpenHelper {
     }
 
     // Delettando uma agenda
-    public void deleteLanche(Agenda agenda) {
+    public void deleteAgenda(Agenda agenda) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, " _id= ?",
                 new String[]{String.valueOf(agenda.getId())});
@@ -136,7 +137,7 @@ public class BancoHelper extends SQLiteOpenHelper {
     }
 
     // Obter quantidade de Agendas
-    public int getLanchesCount() {
+    public int getAgendaCount() {
         String countQuery = "SELECT  * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
